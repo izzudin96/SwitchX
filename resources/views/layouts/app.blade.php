@@ -38,12 +38,15 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ url('/product') }}">Product</a></li>
+                        <li><a href="{{ url('/order') }}">Order</a></li>
+                        <li><a href="{{ url('/order/form') }}">Order Form</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,6 +80,20 @@
                 </div>
             </div>
         </nav>
+        
+        
+        @if(session('message'))
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="alert alert-{{ session('messageType') }}">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ session('message') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         @yield('content')
     </div>

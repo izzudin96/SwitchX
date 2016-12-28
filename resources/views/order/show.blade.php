@@ -105,10 +105,14 @@
 					<input type="file" name="payment"></input>
 
 					<button class="btn btn-success" type="submit">
-						Upload Payment References
+						Upload Payment Reference
 					</button>
-
-					<img src="{{ Storage::url($order->payment_references) }}" alt="">
+					
+					<div class="container">
+						<div class="row">
+							<img class="img-responsive" src="{{ Storage::url($order->payment_references) }}" alt="">
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

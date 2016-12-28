@@ -11,14 +11,14 @@ trait Imageable
 		return $this->morphMany(Image::class, 'imageable');
 	}
 
-	public static function uploadImage($request, $shirtName)
+	public static function uploadImage($request, $product)
     {
-        $shirt = Shirt::name($shirtName)->first();
+        $product = Product::name($product)->first();
 
         $file = $request->file('image');
 
-        $path = $file->store('public/shirt_images/' . $shirt->id);
+        $path = $file->store('public/product_images/' . $product->id);
 
-        $shirt->images()->create(['path' => $path]);
+        $product->images()->create(['path' => $path]);
     }
 }

@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('status')->default(0)->nullable();
             $table->string('post_tracking')->nullable();
             $table->integer('submitted')->default(0)->nullable();
-            $table->double('amount')->default(0);
+            $table->double('amount')->default(0)->nullable();
             $table->timestamps();
         });
     }

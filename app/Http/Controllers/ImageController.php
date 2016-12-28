@@ -4,37 +4,37 @@ namespace App\Http\Controllers;
 
 use Storage;
 use App\Image;
-use App\Shirt;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth');
-
 		$this->middleware('shop.manager');
 	}
 
     public function show($name)
     {
-        $shirt = Shirt::name($name)->first();
+        $product = Product::name($name)->first();
 
-        return view('shirt.image', compact('shirt'));
+        return view('product.image', compact('product'));
     }
 
     public function store(Request $request, $name)
     {
-        Shirt::uploadImage($request, $name);
+        Product::uploadImage($request, $name);
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('message', 'Product image uploaded.')
+            ->with('messageType', 'success');
     }
 
     public function update(Request $request, $name)
     {
-        $shirt = Shirt::Name($name)->first();
+        $product = Product::Name($name)->first();
 
-        $oldDefaultImage = $shirt->images()->where('is_default' , 1)->first();
+        $oldDefaultImage = $product->images()->where('is_default' , 1)->first();
 
         if($oldDefaultImage)
         {
@@ -49,7 +49,9 @@ class ImageController extends Controller
 
         $newDefaultImage->save();
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('message', 'Default product image updated.')
+            ->with('messageType', 'success');
     }
 
     public function destroy(Request $request)
@@ -60,6 +62,8 @@ class ImageController extends Controller
 
     	$image->delete();
 
-    	return redirect()->back();
+    	return redirect()->back()
+            ->with('message', 'Product image deleted.')
+            ->with('messageType', 'success');
     }
 }

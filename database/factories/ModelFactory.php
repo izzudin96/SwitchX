@@ -34,19 +34,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Shirt::class, function (Faker\Generator $faker) {
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->name,
         'description' => $faker->paragraph(),
-        'price' => $faker->randomNumber(2),
-        'xxs' => $faker->randomNumber(2),
-        'xs' => $faker->randomNumber(2),
-        's' => $faker->randomNumber(2),
-        'm' => $faker->randomNumber(2),
-        'l' => $faker->randomNumber(2),
-        'xl' => $faker->randomNumber(2),
-        'xxl' => $faker->randomNumber(2),
-        'xxxl' => $faker->randomNumber(2),
+        'price' => $faker->randomNumber(3),
     ];
 });
