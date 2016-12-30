@@ -21,9 +21,10 @@
                     </a>
 
                     <h4>RM {{ $product->price }}</h4>
-
-                    <h4>Stock {{ $product->stock($product) }}</h4>
-
+                    
+                    @if($product->attributes()->count())
+                        has stock
+                    @endif
                     <a class="btn btn-success" href="/product/{{ $product->uri($product->name) }}">Buy Now</a>
                     
                 </div>

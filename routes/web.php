@@ -1,11 +1,18 @@
 <?php
 
-use App\Order;
-
 Route::get('/', 'HomeController@index');
-
-Auth::routes();
 Route::get('home', 'HomeController@index');
+Route::get('about', 'PagesController@about'); //
+Auth::routes();
+
+Route::get('dashboard', 'DashboardController@index');
+Route::get('dashboard/general', 'DashboardController@general'); //ssm-registration
+Route::get('dashboard/payment', 'DashboardController@payment');
+Route::get('dashboard/homepage', 'DashboardController@homepage');
+Route::get('dashboard/product', 'DashboardController@product');
+Route::get('dashboard/order', 'DashboardController@order');
+Route::get('dashboard/user', 'DashboardController@user');
+Route::get('dashboard/analytics', 'DashboardController@analytics');
 
 Route::resource('product', 'ProductController');
 
@@ -30,19 +37,4 @@ Route::post('order/item', 'ItemController@store');
 Route::delete('order/item/{id}', 'ItemController@destroy');
 
 Route::patch('order/{id}', 'PaymentController@store');
-
-Route::get('test', function()
-{
-	$product = Order::find(1)->products()->where('id', 1)->where('attribute', 'm')->first();
-
-	$product->pivot->quantity = 10;
-
-	$product->pivot->save();
-
-	//dd(Order::find(1)->products()->updateExistingPivot($product->id, ['quantity' => 10]));
-});
-
-
-Auth::routes();
-
 

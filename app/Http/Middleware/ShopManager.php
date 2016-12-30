@@ -16,11 +16,15 @@ class ShopManager
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         if(Auth::user()->role < 1)
         {
             return redirect('/');
         }
-
+        
         return $next($request);
     }
 }

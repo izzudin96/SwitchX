@@ -18,14 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->integer('price');
-            // $table->integer('xxs')->nullable()->default(0);
-            // $table->integer('xs')->nullable()->default(0);
-            // $table->integer('s')->nullable()->default(0);
-            // $table->integer('m')->nullable()->default(0);
-            // $table->integer('l')->nullable()->default(0);
-            // $table->integer('xl')->nullable()->default(0);
-            // $table->integer('xxl')->nullable()->default(0);
-            // $table->integer('xxxl')->nullable()->default(0);
             $table->timestamps();
         });
     }

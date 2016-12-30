@@ -9,9 +9,7 @@ class Product extends Model
     //use Orderable;
     use Imageable;
 
-    protected $fillable = ['name','description','price','xxs','xs','s','m','l','xl','xxl','xxxl'];
-
-    protected $sizes = ['xxs','xs','s','m','l','xl','xxl','xxxl'];
+    protected $fillable = ['name','description','price'];
 
     public function Orders()
     {
@@ -25,11 +23,7 @@ class Product extends Model
 
     public function stock(Product $product)
     {
-    	foreach ($this->sizes as $size) {
-    		$stock[] = $product->$size;
-    	}
-
-    	return array_sum($stock);
+        return 'has stock';
     }
 
     public function scopeName($query, $name)

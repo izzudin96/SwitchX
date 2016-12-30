@@ -15,7 +15,7 @@ class Order extends Model
 	{
 		return $this->belongsToMany(Product::class)->withPivot('attribute', 'quantity');
 	}
-	public function orderedBy()
+	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}

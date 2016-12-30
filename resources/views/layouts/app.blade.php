@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/all.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -47,6 +48,7 @@
                         <li><a href="{{ url('/product') }}">Product</a></li>
                         <li><a href="{{ url('/order') }}">Order</a></li>
                         <li><a href="{{ url('/order/form') }}">Order Form</a></li>
+                        <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -81,24 +83,34 @@
             </div>
         </nav>
         
-        
-        @if(session('message'))
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="alert alert-{{ session('messageType') }}">
+                @if (count($errors) > 0)
+                    <div class="alert alert-info alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('message') }}
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                </div>
+                @endif
+                @if(session('message'))
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-{{ session('messageType') }}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ session('message') }}
+                        </div>
+                    </div>
+                @endif
+                @yield('content')
             </div>
         </div>
-        @endif
-
-        @yield('content')
+        
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/all.js"></script>
 </body>
 </html>
