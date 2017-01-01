@@ -1,3 +1,5 @@
+@inject('dashboard', 'App\Dashboard')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>majinzu</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -37,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        majinzu
                     </a>
                     
                 </div>
@@ -105,12 +107,13 @@
                 @endif
                 @yield('content')
             </div>
+             @include('layouts.footer')
         </div>
-        
+       
     </div>
-
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script src="/js/all.js"></script>
+    @include('layouts.google')
 </body>
 </html>

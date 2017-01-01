@@ -41,20 +41,20 @@
       <div class="row">
         <div class="col-lg-4">
           <img class="img-circle" src="uploads/images/default/logo-1-garment.png" alt="Generic placeholder image" width="230" height="230">
-          <h2>Premium Shirt Quality</h2>
-          <p>We only use High-Quality Garment in the shirt production. High-durable 100% cotton that will last for years to come.</p>
+          <h2>{{ $dashboard->feature1 }}</h2>
+          <p>{{ $dashboard->feature1Description }}</p>
           <p><a class="btn btn-default" href="/faqs" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
           <img class="img-circle" src="uploads/images/default/logo-2-poslaju.png" alt="Generic placeholder image" width="230" height="230">
-          <h2>7-days Shipping</h2>
-          <p>All shipping is free throughout Malaysia. Deliveries to your doorstep in just 7-days maximum, courtesy of Poslaju Malaysia.</p>
+          <h2>{{ $dashboard->feature2 }}</h2>
+          <p>{{ $dashboard->feature2Description }}</p>
           <p><a class="btn btn-default" href="/faqs" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
           <img class="img-circle" src="uploads/images/default/logo-3-easy-system.png" alt="Generic placeholder image" width="230" height="230">
-          <h2>Blazing Fast Web</h2>
-          <p>Order multiple products at the touch of your fingertips, with our easy-to-use and lightning super-fast order system thanks to Laravel.</p>
+          <h2>{{ $dashboard->feature3 }}</h2>
+          <p>{{ $dashboard->feature3Description }}</p>
           <p><a class="btn btn-default" href="/shopping-guide" role="button">View Shopping Guide &raquo;</a></p>
         </div>
       </div>

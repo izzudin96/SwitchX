@@ -20,7 +20,7 @@ class PaymentController extends Controller
 
         $order = Order::findOrFail($request->id);
 
-        $order->payment_references = $path;
+        $order->payment_reference = $path;
 
         $order->update();
 

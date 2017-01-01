@@ -24,10 +24,10 @@
                         <tr>
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->user->name }}</td>
-                            @if($order->payment_references)
-                                <td>Uploaded</td>
+                            @if($order->payment_reference)
+                                <td><span class="label label-success">Uploaded</span></td>
                             @else
-                                <td>No upload</td>
+                                <td><span class="label label-danger">No upload</span></td>
                             @endif
                             <td>{{ $order->payment_status }}</td>
                             <td>{{ $order->status }}</td>
@@ -44,6 +44,11 @@
 <div class="col-md-2">
     @include('dashboard/sidebar')
 </div>
+
+@include('dashboard.orderStatus')
+
+
+
 
 
 @endsection

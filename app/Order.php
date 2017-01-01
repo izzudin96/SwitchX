@@ -9,8 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 	protected $fillable = [
-		'name', 'address', 'city', 'poscode', 'state', 'phone', 'status', 'post_tracking',
+		'name', 'address', 'city', 'poscode', 'state', 'phone', 'status', 'post_tracking', 'items'
 	];
+
+	protected $casts = [
+		'items' => 'json'
+	];
+
 	public function products()
 	{
 		return $this->belongsToMany(Product::class)->withPivot('attribute', 'quantity');
@@ -19,7 +24,7 @@ class Order extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
-
+	
 	public function scopeCurrentOrder($query)
 	{
 		return $query->where('user_id', Auth::user()->id)->where('submitted', 0)->first();

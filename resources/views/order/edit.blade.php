@@ -22,15 +22,45 @@
 							</label>
 
 							<div class="col-md-6">
-								<input value="{{ $order->status }}" type="text" class="form-control" name="status" placeholder="Order Status">
+								<select name="status" class="form-control">
+									<option selected>{{ $order->status }}</option>
+									@foreach($statuses as $status)
+										@if($order->status != $status->message)
+											<option>{{ $status->message }}</option>
+										@endif
+									@endforeach
+								</select>
+							
+									@if ($errors->has('status'))
+										<span class="help-block">
+											<strong>
+												{{ $errors->first('status') }}
+											</strong>
+										</span>
+									@endif
+							</div>
+						</div>
 
-								@if ($errors->has('status'))
-									<span class="help-block">
-										<strong>
-											{{ $errors->first('status') }}
-										</strong>
-									</span>
-								@endif
+						<div class="form-group{{ $errors->has('payment_status') ? ' has-error' : '' }}">
+							<label class="col-md-4 control-label" for="payment_status">
+								Payment Status
+							</label>
+
+							<div class="col-md-6">
+								<select name="payment_status" class="form-control">
+									<option selected>{{ $order->payment_status }}</option>
+									<option>Unverified</option>
+									<option>Verified</option>
+									<option>False upload</option>
+								</select>
+							
+									@if ($errors->has('payment_status'))
+										<span class="help-block">
+											<strong>
+												{{ $errors->first('payment_status') }}
+											</strong>
+										</span>
+									@endif
 							</div>
 						</div>
 
@@ -51,6 +81,8 @@
 								@endif
 							</div>
 						</div>
+
+
 
 						<hr>
 

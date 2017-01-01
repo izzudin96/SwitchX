@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Order;
+use App\Status;
 use App\Product;
+use App\Dashboard;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('shop.manager');
+        $this->middleware('shop.manager');
     }
 
     public function index()
@@ -19,19 +21,34 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
+    public function update(Request $request)
+    {
+        $dashboard = Dashboard::first();
+
+        $dashboard->update($request->all());
+
+        return redirect()->back()->with('message', 'Updated.')->with('messageType', 'success');
+    }
+
     public function general()
     {
-        return view('dashboard.general');
+        $dashboard = Dashboard::first();
+
+        return view('dashboard.general', compact('dashboard'));
     }
 
     public function payment()
     {
-        return view('dashboard.payment');
+        $dashboard = Dashboard::first();
+
+        return view('dashboard.payment', compact('dashboard'));
     }
 
     public function homepage()
     {
-        return view('dashboard.homepage');
+        $dashboard = Dashboard::first();
+
+        return view('dashboard.homepage', compact('dashboard'));
     }
 
     public function product()
@@ -44,8 +61,9 @@ class DashboardController extends Controller
     public function order()
     {
         $orders = Order::paginate(20);
+        $statuses = Status::all();
 
-        return view('dashboard.order', compact('orders'));
+        return view('dashboard.order', compact('orders', 'statuses'));
     }
 
     public function user()
@@ -57,6 +75,7 @@ class DashboardController extends Controller
 
     public function analytics()
     {
-        return view('dashboard.analytics');
+        $dashboard = Dashboard::first();
+        return view('dashboard.analytics', compact('dashboard'));
     }
 }

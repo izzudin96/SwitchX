@@ -9,14 +9,16 @@
         </div>
         
         <div class="panel-body">
-            <form class="form-horizontal" role="form" action="/order/form" method="POST">
+            <form class="form-horizontal" role="form" action="/dashboard" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="googleAnalyticCode">
                         Google Analytic's Code
                     </label>
 
                     <div class="col-md-6">
-                        <textarea name="address" class="form-control" rows="6" placeholder="Paste your Google Analytic code here"></textarea>
+                        <textarea name="googleAnalyticCode" class="form-control" rows="6" placeholder="Paste your Google Analytic code here">{{ $dashboard->googleAnalyticCode }}</textarea>
                     </div>
                 </div>
 

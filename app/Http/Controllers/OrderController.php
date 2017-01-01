@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Order;
+use App\Status;
 use App\Product;
 use App\Attribute;
 use Illuminate\Http\Request;
@@ -30,13 +31,16 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        return view('order.show', compact('order'));
+        $items = json_decode($order->items);
+
+        return view('order.show', compact('order', 'items'));
     }
 
     
     public function create()
     {
         $order = Order::CurrentOrder();
+
         if($order->exists() == false) 
         {
             return redirect('/')
@@ -59,7 +63,9 @@ class OrderController extends Controller
     public function submit(Request $request)
     {
         $order = Order::currentOrder();
+
         $products = $order->products()->get();
+
         if(!$order->validateQuantity($products) == true)
         {
             return redirect()->back()
@@ -67,17 +73,34 @@ class OrderController extends Controller
                     ->with('messageType', 'danger');
         }
         $order = Order::currentOrder();
+
+        $grandTotalPrice = 0;
+
+        foreach ($order->products()->get() as $product) 
+        {
+            $totalPrice = $product->price * $product->pivot->quantity;
+
+            $grandTotalPrice = $totalPrice + $grandTotalPrice;
+        }
+
+        $order->amount = $grandTotalPrice;
+
         $order->submitted = 1;
+
+        $order->items = $order->products()->get()->toJson();
+
         $order->update($request->all());
+
         Attribute::deductStock($products);
+
         return redirect('order');
     }
 
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-
-        return view('order.edit', compact('order'));
+        $statuses = Status::all();
+        return view('order.edit', compact('order', 'statuses'));
     }
 
     public function update(Request $request, $id)

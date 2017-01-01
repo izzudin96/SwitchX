@@ -9,34 +9,36 @@
         </div>
         
         <div class="panel-body">
-            <form class="form-horizontal" role="form" action="/order/form" method="POST">
+            <form class="form-horizontal" role="form" action="/dashboard" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="bankName">
                         Bank Name
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="">
+                        <input value="{{ $dashboard->bankName }}" type="text" class="form-control" name="bankName" placeholder="">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="bankAccountNo">
                         Bank Account Number
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="">
+                        <input value="{{ $dashboard->bankAccountNo }}" type="text" class="form-control" name="bankAccountNo" placeholder="">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="bankHolderName">
                         Holder's Name
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="">
+                        <input value="{{ $dashboard->bankHolderName }}" type="text" class="form-control" name="bankHolderName" placeholder="">
                     </div>
                 </div>
 

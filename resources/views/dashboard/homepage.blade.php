@@ -10,61 +10,63 @@
         
         <div class="panel-body">
 
-            <form class="form-horizontal" role="form" action="/order/form" method="POST">
+            <form class="form-horizontal" role="form" action="/dashboard" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="feature1">
                         Feature 1
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="Heading 1">
+                        <input value="{{ $dashboard->feature1 }}" type="text" class="form-control" name="feature1" placeholder="Super-fast service">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="address">
+                    <label class="col-md-4 control-label" for="feature1Description">
                         Description
                     </label>
 
                     <div class="col-md-6">
-                        <textarea name="address" class="form-control" rows="6" placeholder="What are you selling, what really is your business?"></textarea>
+                        <textarea name="feature1Description" class="form-control" rows="6" placeholder="Our service is really fast, that you might think.">{{ $dashboard->feature1Description }}</textarea>
                     </div>
                 </div><hr>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="feature2">
                         Feature 2
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="Heading 2">
+                        <input value="{{ $dashboard->feature2 }}" type="text" class="form-control" name="feature2" placeholder="High quality product">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="address">
+                    <label class="col-md-4 control-label" for="feature2Description">
                         Description
                     </label>
 
                     <div class="col-md-6">
-                        <textarea name="address" class="form-control" rows="6" placeholder="What are you selling, what really is your business?"></textarea>
+                        <textarea name="feature2Description" class="form-control" rows="6" placeholder="Our product is guaranteed to be in high quality because...">{{ $dashboard->feature2Description }}</textarea>
                     </div>
                 </div><hr>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">
+                    <label class="col-md-4 control-label" for="feature3">
                         Feature 3
                     </label>
 
                     <div class="col-md-6">
-                        <input value="" type="text" class="form-control" name="name" placeholder="Heading 3">
+                        <input value="{{ $dashboard->feature3 }}" type="text" class="form-control" name="feature3" placeholder="Return policy">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="address">
+                    <label class="col-md-4 control-label" for="feature3Description">
                         Description
                     </label>
 
                     <div class="col-md-6">
-                        <textarea name="address" class="form-control" rows="6" placeholder="What are you selling, what really is your business?"></textarea>
+                        <textarea name="feature3Description" class="form-control" rows="6" placeholder="Money back if you didn't satifsy...">{{ $dashboard->feature3Description }}</textarea>
                     </div>
                 </div><hr>
                 
