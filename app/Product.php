@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //use Orderable;
     use Imageable;
 
-    protected $fillable = ['name','description','price'];
+    protected $fillable = ['name','description','price', 'postUnit'];
 
     public function Orders()
     {
@@ -21,9 +20,17 @@ class Product extends Model
         return $this->hasMany(Attribute::class);
     }
 
-    public function stock(Product $product)
+    public function totalStock(Product $product)
     {
-        return 'has stock';
+        $totalStock = 0;
+
+        $attributes = $product->attributes()->where('product_id', $product->id)->get();
+
+        foreach ($attributes as $attribute) {
+            $totalStock = $totalStock + $attribute->stock;
+        }
+
+        return $totalStock;
     }
 
     public function scopeName($query, $name)
@@ -31,6 +38,11 @@ class Product extends Model
     	$name = str_replace('-', ' ', $name);
 
     	return $query->where(compact('name'));
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('id', 'desc')->paginate(8);
     }
 
     public function scopeCurrentStock($query, $productId, $attribute)

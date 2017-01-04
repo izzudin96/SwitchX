@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>majinzu</title>
+    <title>{{ $dashboard->storeName() }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">

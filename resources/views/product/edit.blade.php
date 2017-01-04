@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create a New Product</div>
+                <div class="panel-heading">Edit {{ $product->name }}</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role='form' method="POST" action="/product">
                         {{ csrf_field() }}
@@ -46,6 +46,19 @@
                                 @if ($errors->has('price'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('price') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('postUnit') ? ' has-error' : '' }}">
+                            <label for="price" class="col-md-3 control-label">Post Unit</label>
+                            <div class="col-md-8">
+                                <input min="0" type="number" class="form-control" name="postUnit" placeholder="eg: 1,2,5,7,10" value="{{ $product->postUnit }}">
+
+                                @if ($errors->has('postUnit'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('postUnit') }}</strong>
                                 </span>
                                 @endif
                             </div>

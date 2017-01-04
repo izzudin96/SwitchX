@@ -48,6 +48,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('postUnit') ? ' has-error' : '' }}">
+                            <label for="price" class="col-md-3 control-label">Post Unit</label>
+                            <div class="col-md-8">
+                                <input id="postUnit" type="text" class="form-control" name="postUnit" placeholder="eg: 1,2,5,7,10">
+                                @if ($errors->has('postUnit'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('postUnit') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <button type="submit" class="btn btn-success">

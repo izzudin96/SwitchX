@@ -58,8 +58,17 @@
 	                                <td></td>
 	                                <td></td>
 	                                <td></td>
-	                                <td><strong>Grand Total</strong></td>
+	                                <td><strong>Total</strong></td>
 	                                <td><strong>RM {{ $grandTotalPrice }}</strong></td>
+	                                <td><strong>Shipping</strong></td>
+	                                <td><strong>RM {{ $shipping }}</strong></td>
+	                            </tr>
+	                            <tr>
+	                                <td></td>
+	                                <td></td>
+	                                <td></td>
+	                                <td><strong>Grand Total</strong></td>
+	                                <td>RM {{ $grandTotalPrice + $shipping }}</td>
 	                                <td></td>
 	                                <td></td>
 	                            </tr>

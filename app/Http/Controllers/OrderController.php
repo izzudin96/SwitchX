@@ -6,6 +6,7 @@ use Auth;
 use App\Order;
 use App\Status;
 use App\Product;
+use App\Shipping;
 use App\Attribute;
 use Illuminate\Http\Request;
 
@@ -35,11 +36,12 @@ class OrderController extends Controller
 
         return view('order.show', compact('order', 'items'));
     }
-
     
     public function create()
     {
         $order = Order::CurrentOrder();
+
+        $products = $order->products()->get();
 
         if($order->exists() == false) 
         {
@@ -48,16 +50,11 @@ class OrderController extends Controller
                 ->with('messageType', 'info');
         }
 
-        $grandTotalPrice = 0;
+        $shipping = $this->applyShipping($products);
 
-        foreach ($order->products()->get() as $product) 
-        {
-            $totalPrice = $product->price * $product->pivot->quantity;
+        $grandTotalPrice = $order->amount($order);
 
-            $grandTotalPrice = $totalPrice + $grandTotalPrice;
-        }
-
-        return view('order.create', compact('order', 'grandTotalPrice'));
+        return view('order.create', compact('order', 'grandTotalPrice', 'shipping'));
     }
 
     public function submit(Request $request)
@@ -69,37 +66,41 @@ class OrderController extends Controller
         if(!$order->validateQuantity($products) == true)
         {
             return redirect()->back()
-                    ->with('message', 'Please remove items that have more quantity than stock')
+                    ->with('message', 'Please remove items that have more quantity than stock.')
                     ->with('messageType', 'danger');
         }
-        $order = Order::currentOrder();
 
-        $grandTotalPrice = 0;
-
-        foreach ($order->products()->get() as $product) 
-        {
-            $totalPrice = $product->price * $product->pivot->quantity;
-
-            $grandTotalPrice = $totalPrice + $grandTotalPrice;
-        }
-
-        $order->amount = $grandTotalPrice;
-
-        $order->submitted = 1;
-
-        $order->items = $order->products()->get()->toJson();
-
-        $order->update($request->all());
+        $this->saveOrder($order, $request);
 
         Attribute::deductStock($products);
 
         return redirect('order');
     }
 
+    public function applyShipping($products)
+    {
+        $unit = $products->first()->postUnit * $products->first()->pivot->quantity;
+        
+        $box = Shipping::SuitableBox($unit);
+
+        if(!$box->exists())
+        {
+            $box = Shipping::BiggestBox();
+
+            $price = $unit/$box->unit * $box->price;
+
+            return $price;
+        }
+
+        return $box->price;
+    }
+
     public function edit($id)
     {
         $order = Order::findOrFail($id);
+
         $statuses = Status::all();
+        
         return view('order.edit', compact('order', 'statuses'));
     }
 
@@ -110,7 +111,33 @@ class OrderController extends Controller
         $order->update($request->all());
 
         return redirect()->back()
-                    ->with('message', 'Order information updated')
+                    ->with('message', 'Order information updated.')
                     ->with('messageType', 'success');
+    }
+
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+
+        $order->delete();
+
+        return redirect('/')
+                    ->with('message', 'Order deleted.')
+                    ->with('messageType', 'success');
+    }
+
+    public function saveOrder(Order $order, $request)
+    {
+        $order->amount = $order->amount($order);
+
+        $order->shippingCost = $this->applyShipping($order->products());
+
+        $order->submitted = 1;
+
+        $order->status = 'Processing order...';
+
+        $order->items = $order->products()->get()->toJson();
+
+        $order->update($request->all());
     }
 }

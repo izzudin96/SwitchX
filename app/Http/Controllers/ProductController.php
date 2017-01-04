@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function index()
     {
-    	$products = Product::all();
+    	$products = Product::Latest();
 
     	return view('product.index', compact('products'));
     }
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->back()
+        return redirect('product')
             ->with('message', 'Product updated.')
             ->with('messageType', 'success');
     }

@@ -45,6 +45,7 @@
                     </strong>
                 </div>
                 <div class="panel-body">
+                <div>Delete attribute will cause error to users that are currently ordering the stock.</div>
                     @foreach($product->attributes as $attribute)
                         <form class="panel-body" method="POST" action="/product/{{ $product->uri($product->name) }}/stock">
                         {{ csrf_field() }}
@@ -64,7 +65,17 @@
                             </button>
                         </div>
                         </form>
+
+                        <form class="panel-body" method="POST" action="/product/{{ $product->uri($product->name) }}/stock">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="hidden" name="attributeId" value="{{ $attribute->id }}">
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
                     @endforeach
+
                 </div>
             </div>
         </div>

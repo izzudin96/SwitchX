@@ -23,11 +23,12 @@ class CreateOrdersTable extends Migration
             $table->string('state')->nullable();
             $table->string('phone')->nullable();
             $table->string('payment_reference')->nullable();
-            $table->string('status')->default('Processing order...')->nullable();
+            $table->string('status')->default('Pending submission')->nullable();
             $table->string('payment_status')->default('Unverified');
             $table->string('post_tracking')->nullable();
             $table->integer('submitted')->default(0)->nullable();
             $table->text('items')->nullable();
+            $table->double('shippingCost')->default(0)->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->timestamps();
         });

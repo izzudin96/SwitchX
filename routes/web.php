@@ -18,12 +18,16 @@ Route::get('dashboard/analytics', 'DashboardController@analytics');
 Route::post('dashboard/order/status', 'StatusController@store');
 Route::delete('dashboard/order/status/{id}', 'StatusController@destroy');
 
+Route::get('shipping', 'ShippingController@index');
+Route::post('shipping', 'ShippingController@store');
+Route::delete('shipping', 'ShippingController@destroy');
+
 Route::resource('product', 'ProductController');
 
 Route::get('product/{name}/stock', 'StockController@create');
 Route::post('product/{name}/stock', 'StockController@store');
 Route::patch('product/{name}/stock', 'StockController@update');
-Route::delete('product/{name}/stock', 'StockController@delete');
+Route::delete('product/{name}/stock', 'StockController@destroy');
 
 Route::get('product/{name}/image', 'ImageController@show');
 Route::post('product/{name}/image', 'ImageController@store');
@@ -36,6 +40,7 @@ Route::post('order/form', 'OrderController@submit');
 Route::get('order/{id}', 'OrderController@show');
 Route::get('order/{id}/edit', 'OrderController@edit');
 Route::patch('order/{id}/edit', 'OrderController@update');
+Route::delete('order/{id}/edit', 'OrderController@destroy');
 
 Route::post('order/item', 'ItemController@store');
 Route::delete('order/item/{id}', 'ItemController@destroy');

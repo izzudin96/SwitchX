@@ -40,4 +40,15 @@ class StockController extends Controller
             ->with('message', 'Stock updated')
             ->with('messageType', 'success');
     }
+
+    public function destroy(Request $request)
+    {
+        $attribute = Attribute::findOrFail($request->attributeId);
+
+        $attribute->delete();
+
+        return redirect()->back()
+            ->with('message', 'Attribute deleted')
+            ->with('messageType', 'success');
+    }
 }

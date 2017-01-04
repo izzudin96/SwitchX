@@ -11,13 +11,19 @@ class StatusController extends Controller
     {
         Status::create($request->all());
 
-        return redirect()->back()->with('message', 'New status created')->with('messageType', 'success');
+        return redirect()
+            ->back()
+            ->with('message', 'New status created')
+            ->with('messageType', 'success');
     }
 
     public function destroy($id)
     {
         Status::destroy($id);
 
-        return redirect()->back()->with('message', 'Status deleted')->with('messageType', 'danger');
+        return redirect()
+            ->back()
+            ->with('message', 'Status deleted')
+            ->with('messageType', 'danger');
     }
 }

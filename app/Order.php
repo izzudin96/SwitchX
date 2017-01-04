@@ -25,6 +25,11 @@ class Order extends Model
 		return $this->belongsTo(User::class);
 	}
 	
+	public function scopeLatest($query)
+	{
+		return $query->orderBy('id', 'desc')->paginate(10);
+	}
+
 	public function scopeCurrentOrder($query)
 	{
 		return $query->where('user_id', Auth::user()->id)->where('submitted', 0)->first();
@@ -32,7 +37,7 @@ class Order extends Model
 
 	public function scopeUserSubmittedOrders($query)
 	{
-		return $query->where('user_id', Auth::user()->id)->where('submitted', 1)->get();
+		return $query->where('user_id', Auth::user()->id)->where('submitted', 1)->orderBy('id', 'desc')->paginate(5);
 	}
 
 	public static function validateQuantity($products)
@@ -48,4 +53,18 @@ class Order extends Model
 			return true;
 		}
 	}
+
+	public function amount(Order $order)
+    {
+        $grandTotalPrice = 0;
+
+        foreach ($order->products()->get() as $product) 
+        {
+            $totalPrice = $product->price * $product->pivot->quantity;
+
+            $grandTotalPrice = $totalPrice + $grandTotalPrice;
+        }
+
+        return $grandTotalPrice;
+    }
 }

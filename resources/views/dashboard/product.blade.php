@@ -25,7 +25,7 @@
                             <td><a href="/product/{{ $product->uri($product->name) }}">{{ $product->name }}</a></td>
                             <td>{{ $product->price }}</td>
                             <td><a href="/product/{{ $product->uri($product->name) }}/edit">Manage</a></td>
-                            <td><a href="/product/{{ $product->uri($product->name) }}/stock">Manage</a></td>
+                            <td><a href="/product/{{ $product->uri($product->name) }}/stock">{{ $product->totalStock($product) }}</a></td>
                             <td><a href="/product/{{ $product->uri($product->name) }}/image">Manage</a></td>
                         </tr>
                     @endforeach

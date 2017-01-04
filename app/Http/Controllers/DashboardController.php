@@ -53,14 +53,15 @@ class DashboardController extends Controller
 
     public function product()
     {  
-        $products = Product::paginate(20);
+        $products = Product::Latest();
         
         return view('dashboard.product', compact('products'));
     }
 
     public function order()
     {
-        $orders = Order::paginate(20);
+        $orders = Order::Latest();
+
         $statuses = Status::all();
 
         return view('dashboard.order', compact('orders', 'statuses'));
@@ -76,6 +77,7 @@ class DashboardController extends Controller
     public function analytics()
     {
         $dashboard = Dashboard::first();
+        
         return view('dashboard.analytics', compact('dashboard'));
     }
 }

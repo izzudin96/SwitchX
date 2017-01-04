@@ -199,6 +199,18 @@
 								</button>
 							</div>
 						</div>
+					</form><hr>
+
+					<form class="form-horizontal" role="form" action="/order/{{ $order->id }}/edit" method="POST">
+						{{ csrf_field() }}
+						{{ method_field("DELETE") }}
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<button type="submit" class="btn btn-danger">
+									Delete Order
+								</button>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

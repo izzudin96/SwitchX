@@ -25,15 +25,10 @@
                         <td>{{ $item->pivot->quantity * $item->price }}</td>
                     </tr>
                 @endforeach
-
-                <tr>   
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Amount</td>
-                    <td>RM {{ $order->amount }}</td>
-                </tr>
             </tbody>
         </table>
+        Total Price: {{ $order->amount }} <br>  
+        Shipping : {{ $order->shippingCost }} <br>
+        Grand total: {{ $order->amount + $order->shippingCost  }} <br>
     </div>
 </div>
