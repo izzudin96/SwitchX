@@ -42,7 +42,7 @@ class Product extends Model
 
     public function scopeLatest($query)
     {
-        return $query->orderBy('id', 'desc')->paginate(8);
+        return $query->orderBy('id', 'desc')->paginate(9);
     }
 
     public function scopeCurrentStock($query, $productId, $attribute)

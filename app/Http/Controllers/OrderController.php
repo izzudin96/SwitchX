@@ -41,14 +41,21 @@ class OrderController extends Controller
     {
         $order = Order::CurrentOrder();
 
-        $products = $order->products()->get();
-
         if($order->exists() == false) 
         {
             return redirect('/')
                 ->with('message', 'Please add a product to proceed the order.')
                 ->with('messageType', 'info');
         }
+
+        if($order->products()->exists() == false)
+        {
+            return redirect('/')
+                ->with('message', 'Please add a product to proceed the order.')
+                ->with('messageType', 'info');
+        }
+
+        $products = $order->products()->get();
 
         $shipping = $this->applyShipping($products);
 

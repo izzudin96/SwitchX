@@ -1,30 +1,28 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
-        Stock Information
+    <div class="panel-heading product-stock">
+        Stock Availability
     </div>
 
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="text-center">
-                        Attribute
+                    <th>
+                        option
                     </th>
-                    <th class="text-center">
-                        Quantity
+                    <th>
+                        stock
                     </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($product->attributes as $attribute)
                 <tr>
-                    <td class="text-center">
+                    <td>
                         {{ $attribute->name }}
                     </td>
-                    <td class="text-center">
-                        <span class="label label-primary">
-                            {{ $attribute->stock }} left
-                        </span>
+                    <td>
+                        {{ $attribute->stock }}
                     </td>
                 </tr>
                 @endforeach
