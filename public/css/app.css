@@ -2,136 +2,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=Hind:400,500);
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-group label:not(.error) {
-  font-family: 'Montserrat';
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.form-control {
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  font-family: 'Montserrat',sans-serif;
-  -webkit-appearance: none;
-  color: #2c2c2c;
-  outline: 0;
-  height: 35px;
-  padding: 9px 12px;
-  line-height: normal;
-  font-size: 13px;
-  font-weight: normal;
-  vertical-align: middle;
-  min-height: 35px;
-  -webkit-transition: all 0.12s ease;
-  transition: all 0.12s ease;
-  box-shadow: none;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-transition: background 0.2s linear 0s;
-  transition: background 0.2s linear 0s;
-}
-
-.panel .panel-heading {
-  background: transparent;
-  border-radius: 0px;
-  border-bottom: 0px;
-  padding: 20px;
-  position: relative;
-  z-index: 3;
-  min-height: 48px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.panel.panel-default {
-  border: 1px solid rgba(0, 0, 0, 0.07);
-}
-
-.panel {
-  box-shadow: none;
-  border-radius: 1px;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.panel .panel-heading + .panel-body {
-  padding-top: 0;
-  height: calc(100% - 50px);
-}
-
-.panel .panel-body {
-  padding: 20px;
-  height: 100%;
-  width: 100%;
-}
-
-.product {
-  text-align: center;
-  vertical-align: middle;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-top: 1em;
-}
-
-.product-heading {
-  text-align: center;
-  vertical-align: center;
-  font-family: Montserrat;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 25px;
-}
-
-.product > a {
-  color: #5e5f62;
-}
-
-.product > a:hover {
-  color: #647694;
-  text-decoration: none;
-}
-
-.product-name {
-  font-family: 'Hind', sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #632626;
-  margin-top: 10px;
-}
-
-.product-info {
-  color: #727272;
-  text-decoration: none;
-  margin-bottom: 20px;
-  margin-top: -13px;
-}
-
-.product-description {
-  margin-top: -15px;
-}
-
-.product-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.product-stock {
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -7818,6 +7688,161 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label:not(.error) {
+  font-family: 'Montserrat';
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form-control {
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  font-family: 'Montserrat',sans-serif;
+  -webkit-appearance: none;
+  color: #2c2c2c;
+  outline: 0;
+  height: 35px;
+  padding: 9px 12px;
+  line-height: normal;
+  font-size: 13px;
+  font-weight: normal;
+  vertical-align: middle;
+  min-height: 35px;
+  -webkit-transition: all 0.12s ease;
+  transition: all 0.12s ease;
+  box-shadow: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-transition: background 0.2s linear 0s;
+  transition: background 0.2s linear 0s;
+}
+
+.panel .panel-heading {
+  background: transparent;
+  border-radius: 0px;
+  border-bottom: 0px;
+  padding: 20px;
+  position: relative;
+  z-index: 3;
+  min-height: 48px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.panel.panel-default {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.panel {
+  box-shadow: none;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.panel .panel-heading + .panel-body {
+  padding-top: 0;
+  height: calc(100% - 50px);
+}
+
+.panel .panel-body {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.product {
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 1em;
+}
+
+.product-heading {
+  text-align: center;
+  vertical-align: middle;
+  font-family: Montserrat;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+.product > a {
+  color: #5e5f62;
+}
+
+.product > a:hover {
+  color: #647694;
+  text-decoration: none;
+}
+
+.product-name {
+  font-family: 'Hind', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #632626;
+  margin-top: 10px;
+}
+
+.product-info {
+  color: #727272;
+  text-decoration: none;
+  margin-bottom: 20px;
+  margin-top: -13px;
+}
+
+.product-description {
+  margin-top: -15px;
+}
+
+.product-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+.product-stock {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.table-items {
+  font-family: 'Hind';
+  text-align: center;
+}
+
+.table-items > thead > tr > th {
+  text-align: center;
+}
+
+.order-summary {
+  font-family: 'Hind';
+}
+
+.form-control {
+  min-height: 33px;
+  height: 33px;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+.panel-align {
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=app.css.map */

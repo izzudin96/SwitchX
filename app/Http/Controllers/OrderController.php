@@ -86,20 +86,25 @@ class OrderController extends Controller
 
     public function applyShipping($products)
     {
-        $unit = $products->first()->postUnit * $products->first()->pivot->quantity;
-        
-        $box = Shipping::SuitableBox($unit);
-
-        if(!$box->exists())
+        if(Shipping::first())
         {
-            $box = Shipping::BiggestBox();
+            $unit = $products->first()->postUnit * $products->first()->pivot->quantity;
 
-            $price = $unit/$box->unit * $box->price;
+            $box = Shipping::SuitableBox($unit);
 
-            return $price;
+            if(!$box->exists())
+            {
+                $box = Shipping::BiggestBox();
+
+                $price = $unit/$box->unit * $box->price;
+
+                return $price;
+            }
+
+            return $box->price;
         }
-
-        return $box->price;
+        
+        return 0;
     }
 
     public function edit($id)
@@ -116,6 +121,16 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         $order->update($request->all());
+
+        $order->status = $request->status;
+
+        $order->payment_status = $request->payment_status;
+
+        $order->post_tracking = $request->post_tracking;
+
+        $order->shippingCost = $request->shippingCost;
+
+        $order->amount - $request->amount;
 
         return redirect()->back()
                     ->with('message', 'Order information updated.')

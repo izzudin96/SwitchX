@@ -1,16 +1,16 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>
-            ITEMS ORDERED
+            Items ordered
         </strong>
     </div>
 
     <div class="class panel-body">
-        <table class="table table-hover">
+        <table class="table table-hover table-items">
             <thead>
                 <tr>
-                    <th>Shirt</th>
-                    <th>Size</th>
+                    <th>Item</th>
+                    <th>Option</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
@@ -26,7 +26,7 @@
                     <td>{{ $product->pivot->attribute }}</td>
                     <td>RM {{ $product->price }}</td>
                     <td>{{ $product->pivot->quantity }}</td>
-                    <td>{{ $product->price * $product->pivot->quantity }}</td>
+                    <td>RM {{ $product->price * $product->pivot->quantity }}</td>
                     <td>
                         @if($product->pivot->quantity > 
                         $order->products->find($product->id)->attributes()->where('name', $product->pivot->attribute)->first()->stock)
@@ -40,8 +40,8 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input type="hidden" name="attribute" value="{{ $product->pivot->attribute }}">
-                            <button class="btn btn-warning" type="submit">
-                                Remove Item
+                            <button class="btn btn-danger item-delete" type="submit">
+                                Remove
                             </button>
                         </form>
                     </td>
@@ -52,9 +52,9 @@
                     <td></td>
                     <td></td>
                     <td><strong>Total</strong></td>
-                    <td><strong>RM {{ $grandTotalPrice }}</strong></td>
+                    <td>RM {{ $grandTotalPrice }}</td>
                     <td><strong>Shipping</strong></td>
-                    <td><strong>RM {{ $shipping }}</strong></td>
+                    <td>RM {{ $shipping }}</td>
                 </tr>
                 <tr>
                     <td></td>

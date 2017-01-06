@@ -17,7 +17,7 @@
             </label>
 
             <div class="col-md-6">
-                <input type="text" class="form-control" name="unit" placeholder="How many units can box contain?">
+                <input type="text" class="form-control" name="unit" placeholder="How many units can a box contain?">
             </div>
         </div>
 

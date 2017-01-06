@@ -20,7 +20,7 @@
                     <input type="hidden" name="id" value="{{ $shipping->id }}">
 
                     <button type="submit" class="btn btn-danger">
-                        Delete Status
+                        Delete Box
                     </button>
                 </form>
             </td>

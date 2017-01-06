@@ -11,14 +11,20 @@
 						Upload image for {{ $product->name }}
 					</strong>
 				</div>
+
 				<form class="panel-body" method="POST" action="/product/{{ $product->uri($product->name) }}/image" enctype="multipart/form-data">
 					{{ csrf_field() }}
+					
+					<div class="form-group">
+						<label class="btn btn-default">
+							Browse <input type="file"  name="image"></input>
+						</label>
 
-					<input type="file" name="image"></input>
-
-					<button class="btn btn-success" type="submit">
-						Upload Image
-					</button>
+						<button class="btn btn-success" type="submit">
+							Upload Image
+						</button>
+					</div>
+					
 				</form>
 			</div>
 

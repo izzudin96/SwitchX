@@ -5,8 +5,22 @@
 
 // Variables
 @import "_variables";
-@import "_modified";
-@import "_products";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "_modified";
+@import "_products";
+@import "_orders";
+
+.form-control {
+    min-height: 33px;
+    height: 33px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.panel-align {
+    margin-top: 5px;
+}
+

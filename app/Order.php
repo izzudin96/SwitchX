@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 	protected $fillable = [
-		'name', 'address', 'city', 'poscode', 'state', 'phone', 'status', 'post_tracking', 'items'
+		'name', 'address', 'city', 'poscode', 'state', 'phone',
 	];
 
 	protected $casts = [
@@ -20,6 +20,7 @@ class Order extends Model
 	{
 		return $this->belongsToMany(Product::class)->withPivot('attribute', 'quantity');
 	}
+	
 	public function user()
 	{
 		return $this->belongsTo(User::class);

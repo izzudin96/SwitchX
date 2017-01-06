@@ -8,7 +8,7 @@ class Product extends Model
 {
     use Imageable;
 
-    protected $fillable = ['name','description','price', 'postUnit'];
+    protected $fillable = ['name', 'description', 'price', 'postUnit'];
 
     public function Orders()
     {

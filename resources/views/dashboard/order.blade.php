@@ -45,10 +45,4 @@
     @include('dashboard/sidebar')
 </div>
 
-@include('dashboard.orderStatus')
-
-
-
-
-
 @endsection

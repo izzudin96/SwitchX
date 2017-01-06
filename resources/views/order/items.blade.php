@@ -5,14 +5,14 @@
         </strong>
     </div>
     <div class="panel-body">
-        <table class="table table-hover">
+        <table class="table table-hover table-items">
             <thead>
                 <tr>
                     <th>Item</th>
-                    <th>Attribute</th>
-                    <th>Price/unit</th>
+                    <th>Option</th>
+                    <th>Price</th>
                     <th>Quantity</th>
-                    <th>Price*Quantity</th>
+                    <th>Total Price</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,8 +27,12 @@
                 @endforeach
             </tbody>
         </table>
-        Total Price: {{ $order->amount }} <br>  
-        Shipping : {{ $order->shippingCost }} <br>
-        Grand total: {{ $order->amount + $order->shippingCost  }} <br>
+
+        <div class="order-summary">
+            <p><strong>Total Price:</strong> RM {{ $order->amount }}</p>
+            <p><strong>Shipping:</strong> RM {{ $order->shippingCost }}</p>
+            <p><strong>Grand total:</strong> RM {{ $order->amount + $order->shippingCost  }}</p>
+        </div>
+        
     </div>
 </div>
