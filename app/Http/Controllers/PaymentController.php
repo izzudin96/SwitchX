@@ -14,6 +14,10 @@ class PaymentController extends Controller
 	
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'payment' => 'required | mimes:jpeg,jpg,png | max:2000',
+        ]);
+
         $file = request()->file('payment');
 
         $path = $file->store('public/payments/' . auth()->id());

@@ -116,6 +116,12 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'status' => 'required',
+            'payment_status' => 'required|between:1,3',
+            'shippingCost' => 'nullable|numeric',
+        ]);
+
         $order = Order::findOrFail($id);
 
         $order->status = $request->status;
@@ -146,6 +152,15 @@ class OrderController extends Controller
 
     public function saveOrder(Order $order, $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'poscode' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'phone' => 'required',
+        ]);
+
         $order->amount = $order->amount($order);
 
         $order->shippingCost = $this->applyShipping($order->products());

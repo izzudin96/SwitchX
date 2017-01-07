@@ -18,6 +18,12 @@ class ItemController extends Controller
 
     public function store(Request $request) //authenticated user
     {
+        $this->validate($request, [
+            'attribute' => 'required|exists:attributes,name',
+            'productId' => 'required|exists:products,id',
+            'quantity' => 'required|numeric|min:0',
+        ]);
+
         $attribute = $request->attribute;
 
         $productId = $request->productId;

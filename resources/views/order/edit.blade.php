@@ -32,10 +32,18 @@
 
 					<div class="col-md-6">
 						<select name="payment_status" class="form-control">
-							<option selected>{{ $order->payment_status }}</option>
-							<option>Unverified</option>
-							<option>Verified</option>
-							<option>False upload</option>
+							<option selected>
+								@if ($order->payment_status == 0)
+									 Unverified 
+								@elseif ($order->payment_status == 1)
+									Verified
+								@else
+									False Upload
+								@endif
+							</option>
+							<option value="0">Unverified</option>
+							<option value="1">Verified</option>
+							<option value="3">False upload</option>
 						</select>
 					</div>
 				</div>

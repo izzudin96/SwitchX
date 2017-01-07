@@ -50,6 +50,13 @@ class ProductController extends Controller
 
     public function update(Request $request, $name) //admin
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|min:0',
+            'postUnit' => 'numeric',
+        ]);
+
         $product = Product::name($name)->first();
 
         $product->update($request->all());

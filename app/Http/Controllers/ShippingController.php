@@ -21,6 +21,12 @@ class ShippingController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'unit' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+
         Shipping::create($request->all());
 
         return redirect()->back()

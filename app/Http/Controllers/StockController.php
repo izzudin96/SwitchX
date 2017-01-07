@@ -22,6 +22,12 @@ class StockController extends Controller
     public function store(Request $request, $name)
     {
         $product = Product::name($name)->first();
+
+        $this->validate($request, [
+            'attribute_name' => 'required',
+            'stock' => 'required|numeric|min:0'
+        ]);
+
         $product->attributes()->create([
             'name' => $request->attribute_name,
             'stock' => $request->stock,
@@ -32,6 +38,11 @@ class StockController extends Controller
     }
     public function update(Request $request, $name)
     {
+       $this->validate($request, [
+            'attribute_name' => 'required',
+            'stock' => 'required|numeric|min:0'
+        ]);
+
         $attribute = Attribute::find($request->id);
         $attribute->update([
             'name' => $request->attribute_name,

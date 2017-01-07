@@ -24,6 +24,10 @@ class ImageController extends Controller
 
     public function store(Request $request, $name)
     {
+        $this->validate($request, [
+            'image' => 'required | mimes:jpeg,jpg,png | max:2000'
+        ]);
+
         Product::uploadImage($request, $name);
 
         return redirect()->back()
@@ -70,6 +74,10 @@ class ImageController extends Controller
 
     public function storeDashboardImage(Request $request)
     {
+        $this->validate($request, [
+            'image' => 'required | mimes:jpeg,jpg,png | max:2000'
+        ]);
+        
         Dashboard::homepageUpload($request);
 
         return redirect()->back()
