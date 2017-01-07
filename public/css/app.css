@@ -7821,6 +7821,11 @@ button.close {
   font-weight: 600;
 }
 
+.image-action {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .table-items {
   font-family: 'Hind';
   text-align: center;
@@ -7832,6 +7837,30 @@ button.close {
 
 .order-summary {
   font-family: 'Hind';
+}
+
+.features {
+  margin-top: 2em;
+}
+
+.feature-title {
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.feature-content {
+  font-family: 'Hind';
+  font-size: 16px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.feature-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-control {

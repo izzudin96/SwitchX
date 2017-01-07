@@ -8,6 +8,10 @@
         Products
     </h1>
 
+    @if(!$products->count())
+        <p class="text-center">Sorry... No product yet.</p>
+    @endif
+
     @foreach($products as $product)
 
         <div class="col-md-4 product">

@@ -26,6 +26,6 @@ class HomeController extends Controller
     {
         $dashboard = Dashboard::first();
         
-        return view('home', compact('dashboard'));
+        return view('pages.home.main', compact('dashboard'));
     }
 }

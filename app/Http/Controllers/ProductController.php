@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
  		$product = Product::create($request->all());
 
- 		return redirect('/product')
+ 		return redirect('/dashboard/product')
             ->with('message', 'Product added')
             ->with('messageType', 'success');
     }

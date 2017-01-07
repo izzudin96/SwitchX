@@ -8,7 +8,7 @@
     <div class="panel-body">
         <form class="form-horizontal" method="POST" action="/product/{{ $product->uri($product->name) }}/stock">
             {{ csrf_field() }}
-d
+
             <div class="form-group">
                 <label for="attribute_name" class="col-md-3 control-label">
                     Attribute Name

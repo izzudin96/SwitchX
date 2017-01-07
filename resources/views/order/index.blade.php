@@ -3,6 +3,15 @@
 @section('content')
 
 <div class="col-md-8 col-md-offset-2">
+
+    <h1 class="product-heading">
+        Orders
+    </h1>
+
+    @if(!$orders->count())
+        <p class="text-center">You've not made any order.</p>
+    @endif
+
     @foreach ($orders as $order)
 
         <div class="panel panel-default">

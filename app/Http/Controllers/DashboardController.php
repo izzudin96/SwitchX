@@ -62,8 +62,6 @@ class DashboardController extends Controller
     {
         $orders = Order::Latest();
 
-        $statuses = Status::all();
-
         return view('dashboard.order', compact('orders', 'statuses'));
     }
 

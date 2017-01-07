@@ -5,7 +5,7 @@
 <div class="col-md-10">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Manage Products
+            Manage Products | <a href="/product/create">Create new Product</a>
         </div>
         
         <div class="panel-body">

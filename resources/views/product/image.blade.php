@@ -37,9 +37,10 @@
 				
 				<div class="panel-body">
 					@foreach($product->images as $image)
-						<div class="col-md-6">
-							<img class="img-responsive" src="{{ Storage::url($image->path) }}" alt="">
-							
+					<div class="col-md-6">
+						<img class="img-responsive" src="{{ Storage::url($image->path) }}" alt="">
+
+						<div class="image-action">
 							<div class="col-md-6">
 								<form action="/product/{{ $product->uri($product->name) }}/image" method="POST">
 									{{ csrf_field() }}
@@ -63,8 +64,7 @@
 									</button>
 								</form>
 							</div>
-
-							
+						</div>
 						</div>
 					@endforeach
 				</div>
