@@ -63,6 +63,7 @@ class ItemController extends Controller
             ->where('attribute', $attribute)
             ->update(['quantity' => $quantity]);
     }
+
     public function destroy(Request $request, $id)
     {
         $order = Order::currentOrder();

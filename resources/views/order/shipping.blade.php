@@ -8,6 +8,15 @@
         <div class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="status">
+                    Submitted
+                </label>
+                <div class="col-md-6 panel-align">
+                    {{ date('F d, Y', strtotime($order->created_at)) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="status">
                     Status
                 </label>
                 <div class="col-md-6 panel-align">

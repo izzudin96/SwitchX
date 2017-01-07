@@ -3,7 +3,7 @@
         <img class="img-responsive product-image" src="{{ Storage::url($product->images()->where('is_default', 1)->first()->path) }}" alt="">
     </a>
 @elseif($product->images()->first())
-    <a href="{{ Storage::url($product->images()->first()->path) }}">
+    <a href="{{ Storage::url($product->images()->first()->path) }}" data-lity>
         <img class="img-responsive product-image" src="{{ Storage::url($product->images()->first()->path) }}" alt="">
     </a>
 @else

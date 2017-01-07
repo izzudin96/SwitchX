@@ -6,26 +6,29 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
+
 				<div class="panel-heading">
 					<strong>
 						Upload image for {{ $product->name }}
 					</strong>
 				</div>
+				
+				<div class="panel-body">
+					<form class="form-horizontal" method="POST" action="/product/{{ $product->uri($product->name) }}/image" enctype="multipart/form-data">
+						{{ csrf_field() }}
+						
+						<div class="form-group">
+							<label class="btn btn-default">
+								Browse <input type="file"  name="image"></input>
+							</label>
 
-				<form class="panel-body" method="POST" action="/product/{{ $product->uri($product->name) }}/image" enctype="multipart/form-data">
-					{{ csrf_field() }}
-					
-					<div class="form-group">
-						<label class="btn btn-default">
-							Browse <input type="file"  name="image"></input>
-						</label>
-
-						<button class="btn btn-success" type="submit">
-							Upload Image
-						</button>
-					</div>
-					
-				</form>
+							<button class="btn btn-success" type="submit">
+								Upload Image
+							</button>
+						</div>
+						
+					</form>
+				</div>
 			</div>
 
 			<div class="panel panel-default">

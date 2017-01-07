@@ -21,4 +21,15 @@ trait Imageable
 
         $product->images()->create(['path' => $path]);
     }
+
+    public static function homepageUpload($request)
+    {
+        $dashboard = Dashboard::first();
+
+        $file = $request->file('image');
+
+        $path = $file->store('public/dashboard/' . $dashboard->id);
+
+        $dashboard->images()->create(['path' => $path]);
+    }
 }

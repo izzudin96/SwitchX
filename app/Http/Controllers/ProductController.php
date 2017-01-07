@@ -48,9 +48,9 @@ class ProductController extends Controller
         return view('product.edit', compact('product'));
     }
 
-    public function update(ProductRequest $request) //admin
+    public function update(Request $request, $name) //admin
     {
-        $product = Product::name($request->name)->first();
+        $product = Product::name($name)->first();
 
         $product->update($request->all());
 
@@ -65,7 +65,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->back()
+        return redirect('product')
             ->with('message', 'Product deleted.')
             ->with('messageType', 'success');
     }

@@ -39,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        majinzu
+                        {{ $dashboard->storeName() }}
                     </a>
                     
                 </div>

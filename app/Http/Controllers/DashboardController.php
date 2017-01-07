@@ -48,7 +48,7 @@ class DashboardController extends Controller
     {
         $dashboard = Dashboard::first();
 
-        return view('dashboard.homepage', compact('dashboard'));
+        return view('dashboard.homepage.main', compact('dashboard'));
     }
 
     public function product()

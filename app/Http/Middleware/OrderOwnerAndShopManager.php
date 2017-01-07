@@ -6,7 +6,7 @@ use Auth;
 use App\Order;
 use Closure;
 
-class OrderOwner
+class OrderOwnerAndShopManager
 {
     /**
      * Handle an incoming request.
@@ -18,6 +18,11 @@ class OrderOwner
     public function handle($request, Closure $next)
     {
         if(Auth::user()->id == Order::find($request->id)->user_id)
+        {
+            return $next($request);
+        }
+
+        if(Auth::user()->role > 1)
         {
             return $next($request);
         }

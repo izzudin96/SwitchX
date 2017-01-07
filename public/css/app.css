@@ -7863,6 +7863,16 @@ button.close {
   margin-right: auto;
 }
 
+.copyright {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.copyright > a {
+  color: #5e5e5e;
+}
+
 .form-control {
   min-height: 33px;
   height: 33px;

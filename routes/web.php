@@ -15,8 +15,8 @@ Route::get('dashboard/order', 'DashboardController@order');
 Route::get('dashboard/user', 'DashboardController@user');
 Route::get('dashboard/analytics', 'DashboardController@analytics');
 
-Route::post('dashboard/order/status', 'StatusController@store');
-Route::delete('dashboard/order/status/{id}', 'StatusController@destroy');
+Route::post('dashboard/{id}/image', 'ImageController@storeDashboardImage');
+Route::delete('dashboard/{id}/image', 'ImageController@destroy');
 
 Route::get('shipping', 'ShippingController@index');
 Route::post('shipping', 'ShippingController@store');

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="features">
             <div class="col-md-4">
-                <img class="img-responsive feature-image" src="http://placehold.it/230x230" alt="Generic placeholder image" width="230" height="230">
+                <img class="img-responsive feature-image" src="{{ $dashboard->feature1Image }}" alt="Generic placeholder image" width="230" height="230">
 
                 <h2 class="feature-title">{{ $dashboard->feature1 }}</h2>
 
@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-4">
-                <img class="img-responsive feature-image" src="http://placehold.it/230x230" alt="Generic placeholder image" width="230" height="230">
+                <img class="img-responsive feature-image" src="{{ $dashboard->feature2Image }}" alt="Generic placeholder image" width="230" height="230">
 
                 <h2 class="feature-title">{{ $dashboard->feature2 }}</h2>
 
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-md-4">
-                <img class="img-responsive feature-image" src="http://placehold.it/230x230" alt="Generic placeholder image" width="230" height="230">
+                <img class="img-responsive feature-image" src="{{ $dashboard->feature3Image }}" alt="Generic placeholder image" width="230" height="230">
 
                 <h2 class="feature-title">{{ $dashboard->feature3 }}</h2>
 

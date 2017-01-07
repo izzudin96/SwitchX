@@ -54,6 +54,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'shop.manager' => \App\Http\Middleware\ShopManager::class,
-        'order.owner' => \App\Http\Middleware\OrderOwner::class,
+        'order.owner' => \App\Http\Middleware\OrderOwnerAndShopManager::class,
     ];
 }

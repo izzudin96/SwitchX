@@ -16,7 +16,7 @@ class OrderController extends Controller
     {
         $this->middleware('auth');
         
-        $this->middleware('order.owner')->only('show');
+        $this->middleware('order.owner')->only('show'); //and shop manager
 
         $this->middleware('shop.manager')->only('edit', 'update');
     }
@@ -110,17 +110,13 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-
-        $statuses = Status::all();
         
-        return view('order.edit', compact('order', 'statuses'));
+        return view('order.edit', compact('order'));
     }
 
     public function update(Request $request, $id)
     {
         $order = Order::findOrFail($id);
-
-        $order->update($request->all());
 
         $order->status = $request->status;
 
@@ -130,7 +126,7 @@ class OrderController extends Controller
 
         $order->shippingCost = $request->shippingCost;
 
-        $order->amount - $request->amount;
+        $order->save();
 
         return redirect()->back()
                     ->with('message', 'Order information updated.')

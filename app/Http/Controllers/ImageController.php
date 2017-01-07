@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Storage;
 use App\Image;
 use App\Product;
+use App\Dashboard;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -63,7 +64,16 @@ class ImageController extends Controller
     	$image->delete();
 
     	return redirect()->back()
-            ->with('message', 'Product image deleted.')
+            ->with('message', 'Image deleted.')
+            ->with('messageType', 'success');
+    }
+
+    public function storeDashboardImage(Request $request)
+    {
+        Dashboard::homepageUpload($request);
+
+        return redirect()->back()
+            ->with('message', 'Product image uploaded.')
             ->with('messageType', 'success');
     }
 }

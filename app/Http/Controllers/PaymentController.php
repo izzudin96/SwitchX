@@ -25,7 +25,7 @@ class PaymentController extends Controller
         $order->update();
 
         return redirect()->back()
-                ->with('message', 'Payment Reference uploaded.')
+                ->with('message', 'Payment Reference uploaded. Will be reviewed soon.')
                 ->with('messageType', 'success');
     }
 }
